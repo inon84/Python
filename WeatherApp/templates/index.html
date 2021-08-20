@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Inon's Weather App</title>
+        <meta name="description" content="weather app">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="static/weather.ico" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        {% endblock %}
+    </head>
+    <body>
+
+        <div class="time container-fluid">
+            {% block time %}
+                <b>{{ now }}</b>
+            {% endblock time %}
+        </div>
+
+        <div class="mb-3">
+          <label for="" class="form-label"></label>
+          <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search city">
+        </div>
+
+        {% block weather %}
+        <div class="weather container-fluid">
+            <div class="card text-dark bg-link">
+                <div class="card-body">
+                    <figure class="figure">
+                        <img src="https://openweathermap.org/img/w/{{ weather.icon }}.png" class="img-fluid" alt="{{ weather.main_description }}">
+                    </figure>
+                    <h4 class="weather-city card-title">{{ weather.city }}, {{ weather.country }}</h4>
+                    <h6 class="weather-description card-subtitle">{{ weather.main_description }}</h6>
+                    <h6 class="weather-description card-text text-muted text-white">{{ weather.description }}</h6>
+                    <p class="card-subtitle">Current: {{ weather.temprature }}&#8451;</p>
+                    <p class="card-subtitle text-muted">Sunrise: {{ weather.sunrise }}</p>
+                    <p class="card-subtitle text-muted">Sunset: {{ weather.sunset }}</p>
+                </div>
+            </div>
+        </div>
+        {% endblock weather %}
+        
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    </body>
+</html>
+
