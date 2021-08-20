@@ -64,8 +64,8 @@ def index(city=None):
         'main_description': rweather['main'],
         'temperature': round(r['main']['temp']),
         'icon': rweather['icon'],
-        'sunrise': dt.utcfromtimestamp(rsys['sunrise'] + offset).strftime('%H:%m'),
-        'sunset': dt.utcfromtimestamp(rsys['sunset'] + offset).strftime('%H:%m'),
+        'sunrise': dt.fromtimestamp(rsys['sunrise'] + offset).strftime('%H:%m'),
+        'sunset': dt.fromtimestamp(rsys['sunset'] + offset).strftime('%H:%m'),
         'timezone': str(tz_show)
     }
     

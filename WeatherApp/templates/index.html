@@ -31,12 +31,13 @@
                     <img src="static/rawImage.jpeg" class="img-fluid rounded float-start d-block" width="150" alt="">
                 </figure>
                 <div class="card-body">
-                    <figure class="figure">
-                        <img src="https://openweathermap.org/img/w/{{ weather.icon }}.png" class="img-fluid" alt="{{ weather.main_description }}">
-                    </figure>
                     <h4 class="weather-city card-title">{{ weather.city }}, {{ weather.country }}</h4>
-                    <h6 class="weather-description card-subtitle">{{ weather.main_description }}</h6>
-                    <h6 class="weather-description card-text text-muted text-white">{{ weather.description }}</h6>
+                    <span>
+                        <figure class="figure">
+                            <img src="https://openweathermap.org/img/w/{{ weather.icon }}.png" class="img-fluid" alt="{{ weather.main_description }}">
+                        </figure>
+                        <h6 class="weather-description text-muted card-subtitle">{{ weather.main_description }}: {{ weather.description }}</h6>
+                    </span>
                     <p class="card-subtitle">Current: {{ weather.temperature }}&#8451;</p>
                     <p class="card-subtitle text-muted">Sunrise: {{ weather.sunrise }}</p>
                     <p class="card-subtitle text-muted">Sunset: {{ weather.sunset }}</p>
