@@ -27,6 +27,9 @@
         {% block weather %}
         <div class="weather container-fluid">
             <div class="card text-dark bg-link">
+                <figure class="figure">
+                    <img src="static/rawImage.jpeg" class="img-fluid rounded float-start d-block" width="150" alt="">
+                </figure>
                 <div class="card-body">
                     <figure class="figure">
                         <img src="https://openweathermap.org/img/w/{{ weather.icon }}.png" class="img-fluid" alt="{{ weather.main_description }}">

@@ -1,5 +1,5 @@
 from datetime import datetime as dt
-import pytz
+from datetime import timedelta, tzinfo
 import requests
 from flask import Flask, render_template, request
 
@@ -31,6 +31,7 @@ def index(city=None):
     WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}&units=metric'
     FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast?q={}&appid={}&units=metric'
 
+    
     now = dt.now().strftime('%X | %A, %d %B, %Y')
     r = requests.get(WEATHER_URL.format(city, API_KEY)).json()
     forecast = requests.get(FORECAST_URL.format(city, API_KEY)).json()
@@ -47,13 +48,13 @@ def index(city=None):
     #tz offset string
     tz = dt.utcfromtimestamp(r['timezone']).strftime('%H')
     if (int(tz) < 12):
-        tz_show="UTC+" + tz
+        offset = int(tz)
+        tz_show="UTC+" + str(offset)
     else:
-        tz_show="UTC-" + str(24-int(tz))
-        
-    utc = pytz.timezone('UTC')
-    offset = utc.utcoffset(now)
-    print(f'UTC: {utc}, offset: {offset}')
+        offset = 24-int(tz)
+        tz_show="UTC-" + str(offset)
+    
+    print(f'offset: {offset}')
     
     weather_data = {
         'city': forecast['city']['name'],
@@ -63,8 +64,8 @@ def index(city=None):
         'main_description': rweather['main'],
         'temperature': round(r['main']['temp']),
         'icon': rweather['icon'],
-        'sunrise': dt.utcfromtimestamp(rsys['sunrise']+24-int(tz)).strftime('%H:%m'),
-        'sunset': dt.utcfromtimestamp(rsys['sunset']+24-int(tz)).strftime('%H:%m'),
+        'sunrise': dt.utcfromtimestamp(rsys['sunrise'] + offset).strftime('%H:%m'),
+        'sunset': dt.utcfromtimestamp(rsys['sunset'] + offset).strftime('%H:%m'),
         'timezone': str(tz_show)
     }
     
