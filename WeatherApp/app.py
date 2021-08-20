@@ -27,6 +27,8 @@ def index(city=None):
     # ip_address = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
     # city = get_geo(ip_address)
     
+    # FORECAST_URL(full) https://api.openweathermap.org/data/2.5/weather?q=Las%20Vegas&appid=ebb0bc77fb0c2a744c9b44d4c97b2631&units=metric
+    
     API_KEY = 'ebb0bc77fb0c2a744c9b44d4c97b2631' # TODO: Hide in env vars?
     WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}&units=metric'
     FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast?q={}&appid={}&units=metric'
@@ -46,19 +48,18 @@ def index(city=None):
     rsys = r['sys']
         
     #tz offset string
-    tz = dt.utcfromtimestamp(r['timezone']).strftime('%H')
-    if (int(tz) < 12):
-        offset = int(tz)
+    offset = float(dt.utcfromtimestamp(r['timezone']).strftime('%H.%m'))
+    # offset = dt(r['timezone'])
+    if offset < 12:
         tz_show="UTC+" + str(offset)
     else:
-        offset = 24-int(tz)
         tz_show="UTC-" + str(offset)
     
     print(f'offset: {offset}')
     
     weather_data = {
         'city': forecast['city']['name'],
-        'offset': offset,
+        'offset': float(offset),
         'country': rsys['country'],
         'description': rweather['description'],
         'main_description': rweather['main'],
