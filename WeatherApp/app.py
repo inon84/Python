@@ -17,14 +17,15 @@ app = Flask(__name__)
 
 @app.route('/')
 @app.route('/<city>')
-def index():
-    
+def index(city=None):
+    if city != None:
+        city=city
+    else: city = "Boston"
     #TODO: fix this to get the client ip_address to fetch city
     # ip_address = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
     # city = get_geo(ip_address)
     
     #TODO: Handle errors on city name, if not 200 OK
-    city='Boston'
     API_KEY = 'ebb0bc77fb0c2a744c9b44d4c97b2631' # TODO: Hide in env vars?
     WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}&units=metric'
     FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast?q={}&appid={}&units=metric'
