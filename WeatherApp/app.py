@@ -22,7 +22,7 @@ def index():
     
     #TODO: Handle errors on city name, if not 200 OK
     city='Tel Aviv'
-    API_KEY = 'ebb0bc77fb0c2a744c9b44d4c97b2631'
+    API_KEY = 'ebb0bc77fb0c2a744c9b44d4c97b2631' # TODO: Hide in env vars?
     WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}&units=metric'
     FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast?q={}&appid={}&units=metric'
 
