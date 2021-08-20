@@ -1,4 +1,5 @@
-from datetime import datetime
+from datetime import datetime as dt
+import pytz
 import requests
 from flask import Flask, render_template, request
 
@@ -30,10 +31,10 @@ def index(city=None):
     WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}&units=metric'
     FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast?q={}&appid={}&units=metric'
 
-    now = datetime.now().strftime('%X | %A, %d %B, %Y')
+    now = dt.now().strftime('%X | %A, %d %B, %Y')
     r = requests.get(WEATHER_URL.format(city, API_KEY)).json()
     forecast = requests.get(FORECAST_URL.format(city, API_KEY)).json()
-
+    
     # weather & forecast mocks "Tel Aviv" city below, un-comment aboves and comment the belows when done:
     # r = {'coord': {'lon': 34.8, 'lat': 32.0833}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 26.08, 'feels_like': 26.08, 'temp_min': 24.6, 'temp_max': 27.14, 'pressure': 1005, 'humidity': 67}, 'visibility': 10000, 'wind': {'speed': 3.09, 'deg': 150}, 'clouds': {'all': 0}, 'dt': 1629410490, 'sys': {'type': 1, 'id': 6845, 'country': 'IL', 'sunrise': 1629428916, 'sunset': 1629476409}, 'timezone': 10800, 'id': 293396, 'name': 'Tel Aviv', 'cod': 200}
     
@@ -42,29 +43,35 @@ def index(city=None):
     
     rweather = r['weather'][0]
     rsys = r['sys']
-    
-    tz = datetime.utcfromtimestamp(r['timezone']).strftime('%H')
+        
+    #tz offset string
+    tz = dt.utcfromtimestamp(r['timezone']).strftime('%H')
     if (int(tz) < 12):
-        tz="UTC+" + tz
+        tz_show="UTC+" + tz
     else:
-        tz="UTC-" + str(24-int(tz))
+        tz_show="UTC-" + str(24-int(tz))
+        
+    utc = pytz.timezone('UTC')
+    offset = utc.utcoffset(now)
+    print(f'UTC: {utc}, offset: {offset}')
     
     weather_data = {
-        'city': city,
+        'city': forecast['city']['name'],
+        'offset': offset,
         'country': rsys['country'],
         'description': rweather['description'],
         'main_description': rweather['main'],
         'temperature': round(r['main']['temp']),
         'icon': rweather['icon'],
-        'sunrise': datetime.fromtimestamp(rsys['sunrise']).strftime('%H:%m'),
-        'sunset': datetime.fromtimestamp(rsys['sunset']).strftime('%H:%m'),
-        'timezone': tz
+        'sunrise': dt.utcfromtimestamp(rsys['sunrise']+24-int(tz)).strftime('%H:%m'),
+        'sunset': dt.utcfromtimestamp(rsys['sunset']+24-int(tz)).strftime('%H:%m'),
+        'timezone': str(tz_show)
     }
     
     pop = forecast['city']['population']
     
     forecast_data = {
-        'city': city,
+        'city': forecast['city'],
         'population': f'{pop:,}'
     }
     
