@@ -15,45 +15,93 @@
 
         <div class="time container-fluid">
             {% block time %}
-                <b>{{ now }}</b>
+                <p>{{ now_local.strftime('%X | %A, %d %B, %Y') }} <b>(now_local)</b></p>
+                <p>{{ now }} <b>(UTC)</b></p>
+                <p>{{ now_utc.strftime('%X | %A, %d %B, %Y') }} <b>(now_utc)</b></p>
             {% endblock time %}
         </div>
 
         <div class="mb-3">
           <label for="" class="form-label"></label>
-          <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search city" disabled>
+          <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search city (TODO, coming soon)" disabled>
         </div>
 
         {% block weather %}
         <div class="weather container-fluid">
-            <div class="card text-dark bg-link">
-                <figure class="figure">
-                    <img src="static/rawImage.jpeg" class="img-fluid rounded float-start d-block" width="150" alt="">
-                </figure>
-                <div class="card-body">
-                    <h4 class="weather-city card-title">{{ weather.city }}, {{ weather.country }}</h4>
+            <div class="card text-dark bg-link text-center">
+                {# <figure class="figure"> #}
+                    {# <img src="static/rawImage.jpeg" class="img-fluid rounded float-start d-block" width="150" alt=""> #}
+                {# </figure> #}
+                <div class="card-body align-items-center">
+                    <h1 class="weather-city card-title">{{ weather.city }}, {{ weather.country }}</h1>
                     <span>
+                        <h6 class="weather-description text-muted card-subtitle">{{ weather.main_description }} ({{ weather.description }})</h6>
                         <figure class="figure">
                             <img src="https://openweathermap.org/img/w/{{ weather.icon }}.png" class="img-fluid" alt="{{ weather.main_description }}">
                         </figure>
-                        <h6 class="weather-description text-muted card-subtitle">{{ weather.main_description }}: {{ weather.description }}</h6>
+                        <h3 class="card-subtitle">Current: {{ weather.temperature }}&#8451;</h3>
                     </span>
-                    <p class="card-subtitle">Current: {{ weather.temperature }}&#8451;</p>
                     <p class="card-subtitle text-muted">Sunrise: {{ weather.sunrise }}</p>
                     <p class="card-subtitle text-muted">Sunset: {{ weather.sunset }}</p>
-                    <p class="card-subtitle text-muted">Offset: {{ weather.offset }}</p>
                     <p></p>
                     
                     <p class="forecast-city-population card-subtitle text-muted">Timezone: {{ weather.timezone }}</p>                  
                     <p class="forecast-city-population card-subtitle text-muted">Population: {{ forecast.population }}</p>                  
-
                 </div>
+                <div class="weather-forecast container-fluid">
+                <h2 class="text-muted">Five Day Forecast</h2>
+                <div class="row align-items-center">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
         {% endblock weather %}
         
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     </body>
 </html>
-
