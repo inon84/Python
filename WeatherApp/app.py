@@ -20,7 +20,7 @@ app = Flask(__name__)
 def index(city=None):
     if city != None:
         city=city
-    else: city = "Boston"
+    else: city = "Tel Aviv"
     #TODO: fix this to get the client ip_address to fetch city
     # ip_address = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
     # city = get_geo(ip_address)
