@@ -22,7 +22,7 @@
 
         <div class="mb-3">
           <label for="search" class="form-label"></label>
-          <input type="text" class="form-control" name="search" width=0.5 id="search" aria-describedby="helpId" placeholder="Search city (TODO, coming soon)" disabled>
+          <input type="text" class="form-control" name="search" width=0.5 id="search" aria-describedby="helpId" placeholder="Search city (TODO, coming soon)">
         </div>
 
         {% block weather %}
@@ -51,6 +51,7 @@
                     <h3 class="text-muted">Five Day Forecast</h3>
                     <div class="row align-items-center">
                     {% for cast in forecast.forecastlist %}
+                        {# {{ icon = cast['weather']['icon'] }} #}
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
