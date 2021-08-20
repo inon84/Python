@@ -40,6 +40,7 @@ def index(city=None):
     print("now:", now)
     print("now_utc:", now_utc)
     print("now_local:", now_local)
+    print(dt.fromtimestamp(1629514800))
     
     r = requests.get(WEATHER_URL.format(city, API_KEY)).json()
     forecast = requests.get(FORECAST_URL.format(city, API_KEY)).json()
@@ -48,7 +49,7 @@ def index(city=None):
     rsys = r['sys']
         
     #tz offset string
-    offset = float(dt.utcfromtimestamp(r['timezone']).strftime('%H.%m'))
+    offset = int(dt.utcfromtimestamp(r['timezone']).strftime('%H'))
     # offset = dt(r['timezone'])
     if offset < 12:
         tz_show="UTC+" + str(offset)
@@ -59,7 +60,7 @@ def index(city=None):
     
     weather_data = {
         'city': forecast['city']['name'],
-        'offset': float(offset),
+        'offset': int(offset),
         'country': rsys['country'],
         'description': rweather['description'],
         'main_description': rweather['main'],
@@ -75,10 +76,12 @@ def index(city=None):
     
     forecast_data = {
         'city': forecast['city'],
-        'population': f'{pop:,}'
+        'population': f'{pop:,}',
+        'forecastlist': forecast['list']
     }
     
-    return render_template('index.html', now_local=now_local, 
+    return render_template('index.html', 
+                            now_local=now_local, 
                             now_utc=now_utc, 
                             now=now, 
                             weather=weather_data, 

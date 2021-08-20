@@ -12,7 +12,6 @@
         {% endblock %}
     </head>
     <body>
-
         <div class="time container-fluid">
             {% block time %}
                 <p>{{ now_local.strftime('%X | %A, %d %B, %Y') }} <b>(now_local)</b></p>
@@ -22,8 +21,8 @@
         </div>
 
         <div class="mb-3">
-          <label for="" class="form-label"></label>
-          <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search city (TODO, coming soon)" disabled>
+          <label for="search" class="form-label"></label>
+          <input type="text" class="form-control" name="search" width=0.5 id="search" aria-describedby="helpId" placeholder="Search city (TODO, coming soon)" disabled>
         </div>
 
         {% block weather %}
@@ -49,53 +48,22 @@
                     <p class="forecast-city-population card-subtitle text-muted">Population: {{ forecast.population }}</p>                  
                 </div>
                 <div class="weather-forecast container-fluid">
-                <h2 class="text-muted">Five Day Forecast</h2>
+                <h3 class="text-muted">Five Day Forecast</h3>
                 <div class="row align-items-center">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                {% for cast in forecast.forecastlist %}
+                {# {% print(cast) %} #}
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ cast['dt'] }}</h5>
+                                    <h6 class="card-subtitle text-muted">Card subtitle</h6>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
+                {% endfor %}
+
                 </div>
             </div>
             </div>
