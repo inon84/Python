@@ -48,24 +48,27 @@
                     <p class="forecast-city-population card-subtitle text-muted">Population: {{ forecast.population }}</p>                  
                 </div>
                 <div class="weather-forecast container-fluid">
-                <h3 class="text-muted">Five Day Forecast</h3>
-                <div class="row align-items-center">
-
-                {% for cast in forecast.forecastlist %}
-                {# {% print(cast) %} #}
+                    <h3 class="text-muted">Five Day Forecast</h3>
+                    <div class="row align-items-center">
+                    {% for cast in forecast.forecastlist %}
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ cast['dt'] }}</h5>
-                                    <h6 class="card-subtitle text-muted">Card subtitle</h6>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <figure class="figure">
+                                        <img src="https://openweathermap.org/img/w/{{ cast['weather']['icon'] }}.png" class="img-fluid" alt="{{ weather.main_description }}">
+                                    </figure>
+                                    <h6 class="card-subtitle text-muted"> {{ cast['weather']['main'] }}</h6>
+                                    <h6 class="card-subtitle text-muted"> {{ cast['main']['temp'] }}&#8451;</h6>
+                                    <p class="card-text">{{ cast['main']['humidity'] }}% Humidity</p>
+                                    <p class="card-text">Should feel like {{ cast['main']['feels_like'] }}&#8451;</p>
+                                    {# <p class="card-text">Should feel like {{ cast['weather']['feels_like'] }}&#8451;</p> #}
                                 </div>
                             </div>
                         </div>
-                {% endfor %}
-
+                    {% endfor %}
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
         {% endblock weather %}
