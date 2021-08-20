@@ -4,6 +4,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+#TODO: check this to after fixing the client IP fetch
 # def get_geo(ip_address):
 #     try:
 #         response = requests.get("http://api.ipstack.com/{}?access_key=053d8fb4ec21e556609a665c5006937a".format(ip_address))
@@ -17,6 +18,8 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/<city>')
 def index():
+    
+    #TODO: fix this to get the client IP
     # ip_address = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
     # city = get_geo(ip_address)
     
