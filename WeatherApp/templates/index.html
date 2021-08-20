@@ -4,7 +4,7 @@
         {% block head %}
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Inon's Weather App</title>
+        <title>Inon Weather App</title>
         <meta name="description" content="weather app">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="static/weather.ico" type="image/x-icon">
@@ -34,9 +34,14 @@
                     <h4 class="weather-city card-title">{{ weather.city }}, {{ weather.country }}</h4>
                     <h6 class="weather-description card-subtitle">{{ weather.main_description }}</h6>
                     <h6 class="weather-description card-text text-muted text-white">{{ weather.description }}</h6>
-                    <p class="card-subtitle">Current: {{ weather.temprature }}&#8451;</p>
+                    <p class="card-subtitle">Current: {{ weather.temperature }}&#8451;</p>
                     <p class="card-subtitle text-muted">Sunrise: {{ weather.sunrise }}</p>
                     <p class="card-subtitle text-muted">Sunset: {{ weather.sunset }}</p>
+                    <p></p>
+                    
+                    <p class="forecast-city-population card-subtitle text-muted">Timezone: {{ weather.timezone }}</p>                  
+                    <p class="forecast-city-population card-subtitle text-muted">Population: {{ forecast.population }}</p>                  
+
                 </div>
             </div>
         </div>
