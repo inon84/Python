@@ -83,8 +83,10 @@ def index(city=None):
         'timezone': str(tz_show)
     }
     
+    forecast_days = []
     for cast in forecast['list']:
-        print(cast)
+        forecast_days.append(cast['dt_txt'])   
+    print(forecast_days)
     
     pop = forecast['city']['population']
     
