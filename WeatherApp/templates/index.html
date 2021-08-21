@@ -11,24 +11,37 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         {% endblock %}
     </head>
-    <body>
-        <div class="time container-fluid">
+    <body background="static/clouds-bg.jpeg">
+        <header>
             {% block time %}
-                <p>{{ now_local.strftime('%X | %A, %d %B, %Y') }} <b>(now_local)</b></p>
-                <p>{{ now }} <b>(UTC)</b></p>
-                <p>{{ now_utc.strftime('%X | %A, %d %B, %Y') }} <b>(now_utc)</b></p>
+                <div class="time container-fluid opacity-75">
+                    <div class="row align-items-center text-white">
+                        <div class="col">
+                            <p>{{ now_local.strftime('%X | %A, %d %B, %Y') }} <b>(now_local)</b></p>
+                        </div>
+                        <div class="col">
+                            <p>{{ now }} <b>(UTC)</b></p>
+                        </div>
+                        <div class="col">
+                            <p>{{ now_utc.strftime('%X | %A, %d %B, %Y') }} <b>(now_utc)</b></p>
+                        </div>
+                    </div>
+                </div>
             {% endblock time %}
-        </div>
-
-        <div class="search container col-auto">
-            <form action ="/search" method="get">
+         </header>
+        <div class="search container-fluid align-content-center opacity-75">
+            <form action ="/search" method="get" class="row align-items-center">
+            <div class="col">
                 <input type="text" class="form-control" name="city" id="city" placeholder="Search city...">
+            </div>
+            <div class="col">
                 <button type="submit" value ="submit" class="btn btn-primary btn-blue">Go!</button>
+            </div>
             </form>
         </div>
 
         {% block weather %}
-        <div class="weather container-fluid">
+        <div class="weather container-fluid opacity-75">
             <div class="card text-dark bg-link text-center">
                 {# <figure class="figure"> #}
                     {# <img src="static/rawImage.jpeg" class="img-fluid rounded float-start d-block" width="150" alt=""> #}
@@ -47,24 +60,24 @@
                     <p></p>
                     
                     <p class="forecast-city-population card-subtitle text-muted">Timezone: {{ weather.timezone }}</p>                  
-                    <p class="forecast-city-population card-subtitle text-muted">Population: {{ forecast.population }}</p>                  
+                    <p class="forecast-city-population card-subtitle text-muted">Population: {{ forecast_data.population }}</p>                  
                 </div>
                 <div class="weather-forecast container-fluid">
                     <h3 class="text-muted">Five Day Forecast</h3>
                     <div class="row align-items-center">
-                    {% for cast in forecast.forecastlist %}
+                    {% for daily in daily_forecast %}
                         {# {{ icon = cast['weather']['icon'] }} #}
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ cast['dt_txt'] }}</h5>
+                                    <h5 class="card-title">{{ daily['dt_txt'] }}</h5>
                                     <figure class="figure">
-                                        <img src="https://openweathermap.org/img/w/{{ cast['weather']['icon'] }}.png" class="img-fluid" alt="{{ weather.main_description }}">
+                                        <img src="https://openweathermap.org/img/w/{{ daily['weather']['icon'] }}.png" class="img-fluid" alt="{{ weather.main_description }}">
                                     </figure>
-                                    <h6 class="card-subtitle text-muted"> {{ cast['weather']['main'] }}</h6>
-                                    <h6 class="card-subtitle text-muted"> {{ cast['main']['temp'] }}&#8451;</h6>
-                                    <p class="card-text">{{ cast['main']['humidity'] }}% Humidity</p>
-                                    <p class="card-text">Should feel like {{ cast['main']['feels_like'] }}&#8451;</p>
+                                    <h6 class="card-subtitle text-muted"> {{ daily['weather']['main'] }}</h6>
+                                    <h6 class="card-subtitle text-muted"> {{ daily['main']['temp'] }}&#8451;</h6>
+                                    <p class="card-text">{{ daily['main']['humidity'] }}% Humidity</p>
+                                    <p class="card-text">Should feel like {{ daily['main']['feels_like'] }}&#8451;</p>
                                 </div>
                             </div>
                         </div>

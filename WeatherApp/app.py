@@ -44,13 +44,14 @@ def index(city=None):
     now_utc = dt.now(timezone.utc)
     now_local = now_utc.astimezone()
 
-    print("now:", now)
-    print("now_utc:", now_utc)
-    print("now_local:", now_local)
-    print(dt.fromtimestamp(1629514800))
+    # print("now:", now)
+    # print("now_utc:", now_utc)
+    # print("now_local:", now_local)
+    # print(dt.fromtimestamp(1629514800))
     
     r = requests.get(WEATHER_URL.format(city, API_KEY)).json()
     forecast = requests.get(FORECAST_URL.format(city, API_KEY)).json()
+
     
     #TODO: handle bad requests
     # if r['cod'] != 200:
@@ -83,10 +84,19 @@ def index(city=None):
         'timezone': str(tz_show)
     }
     
-    forecast_days = []
+    # forecast_days = []
+    # for cast in forecast['list']:
+    #     forecast_days.append(cast['dt_txt'])   
+    # print(forecast_days)
+    
+    daily_forecast = []
+    
     for cast in forecast['list']:
-        forecast_days.append(cast['dt_txt'])   
-    print(forecast_days)
+        print(cast)
+        # forecast['list'].update({cast[]})
+        daily_forecast.append(cast)
+            
+    print(daily_forecast)
     
     pop = forecast['city']['population']
     
@@ -94,6 +104,8 @@ def index(city=None):
         'city': forecast['city'],
         'population': f'{pop:,}',
         'forecastlist': forecast['list']
+        # 'daily_forecast': daily_forecast
+        # 'days': daily_forecast['dt']
     }
     
     return render_template('index.html',
@@ -102,7 +114,8 @@ def index(city=None):
                             now_utc=now_utc, 
                             now=now, 
                             weather=weather_data, 
-                            forecast=forecast_data)
+                            daily_forecast=daily_forecast,
+                            forecast_data=forecast_data)
 
 if __name__ == '__main__':
     # app.run()
