@@ -1,5 +1,6 @@
 from datetime import datetime as dt
 from datetime import timezone, timedelta, tzinfo
+from flask.templating import render_template_string
 import requests
 from flask import Flask, render_template, redirect, url_for, request
 
@@ -51,11 +52,12 @@ def index(city=None):
     r = requests.get(WEATHER_URL.format(city, API_KEY)).json()
     forecast = requests.get(FORECAST_URL.format(city, API_KEY)).json()
     
-    if r['cod'] == 200:
-        rweather = r['weather'][0]
-        rsys = r['sys']
-    else:
-        pass
+    #TODO: handle bad requests
+    # if r['cod'] != 200:
+    #     print("bad request")
+    
+    rweather = r['weather'][0]
+    rsys = r['sys']
         
     #tz offset string
     offset = int(dt.utcfromtimestamp(r['timezone']).strftime('%H'))
@@ -81,6 +83,9 @@ def index(city=None):
         'timezone': str(tz_show)
     }
     
+    for cast in forecast['list']:
+        print(cast)
+    
     pop = forecast['city']['population']
     
     forecast_data = {
@@ -89,7 +94,7 @@ def index(city=None):
         'forecastlist': forecast['list']
     }
     
-    return render_template('index.html', 
+    return render_template('index.html',
                             city=city,
                             now_local=now_local, 
                             now_utc=now_utc, 
