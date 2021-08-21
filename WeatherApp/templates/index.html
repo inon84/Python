@@ -20,9 +20,11 @@
             {% endblock time %}
         </div>
 
-        <div class="mb-3">
-          <label for="search" class="form-label"></label>
-          <input type="text" class="form-control" name="search" width=0.5 id="search" aria-describedby="helpId" placeholder="Search city (TODO, coming soon)">
+        <div class="search container col-auto">
+            <form action ="/search" method="get">
+                <input type="text" class="form-control" name="city" id="city" placeholder="Search city...">
+                <button type="submit" value ="submit" class="btn btn-primary btn-blue">Go!</button>
+            </form>
         </div>
 
         {% block weather %}
