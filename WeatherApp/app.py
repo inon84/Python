@@ -90,13 +90,16 @@ def index(city=None):
     # print(forecast_days)
     
     daily_forecast = []
+    daily_times = []
     
     for cast in forecast['list']:
         print(cast)
         # forecast['list'].update({cast[]})
+        daily_times.append(cast['dt'])
         daily_forecast.append(cast)
             
     print(daily_forecast)
+    print(daily_times)
     
     pop = forecast['city']['population']
     

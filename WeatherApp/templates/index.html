@@ -12,6 +12,7 @@
         {% endblock %}
     </head>
     <body background="static/clouds-bg.jpeg">
+        <div class="clearfix">...</div>
         <header>
             {% block time %}
                 <div class="time container-fluid opacity-75">
@@ -29,62 +30,69 @@
                 </div>
             {% endblock time %}
          </header>
-        <div class="search container-fluid align-content-center opacity-75">
+        <div class="search container-fluid align-content-center">
             <form action ="/search" method="get" class="row align-items-center">
             <div class="col">
-                <input type="text" class="form-control" name="city" id="city" placeholder="Search city...">
+                <input type="text" class="form-control rounded" name="city" id="city" placeholder="Search city..." required>
             </div>
             <div class="col">
-                <button type="submit" value ="submit" class="btn btn-primary btn-blue">Go!</button>
+                <button type="submit" value ="submit" class="btn btn-primary btn-blue rounded">Go!</button>
             </div>
             </form>
         </div>
 
         {% block weather %}
-        <div class="weather container-fluid opacity-75">
-            <div class="card text-dark bg-link text-center">
-                {# <figure class="figure"> #}
-                    {# <img src="static/rawImage.jpeg" class="img-fluid rounded float-start d-block" width="150" alt=""> #}
-                {# </figure> #}
-                <div class="card-body align-items-center">
-                    <h1 class="weather-city card-title">{{ weather.city }}, {{ weather.country }}</h1>
-                    <span>
-                        <h6 class="weather-description text-muted card-subtitle">{{ weather.main_description }} ({{ weather.description }})</h6>
-                        <figure class="figure">
-                            <img src="https://openweathermap.org/img/w/{{ weather.icon }}.png" class="img-fluid" alt="{{ weather.main_description }}">
-                        </figure>
-                        <h3 class="card-subtitle">Current: {{ weather.temperature }}&#8451;</h3>
-                    </span>
-                    <p class="card-subtitle text-muted">Sunrise: {{ weather.sunrise }}</p>
-                    <p class="card-subtitle text-muted">Sunset: {{ weather.sunset }}</p>
-                    <p></p>
-                    
-                    <p class="forecast-city-population card-subtitle text-muted">Timezone: {{ weather.timezone }}</p>                  
-                    <p class="forecast-city-population card-subtitle text-muted">Population: {{ forecast_data.population }}</p>                  
-                </div>
-                <div class="weather-forecast container-fluid">
-                    <h3 class="text-muted">Five Day Forecast</h3>
-                    <div class="row align-items-center">
-                    {% for daily in daily_forecast %}
-                        {# {{ icon = cast['weather']['icon'] }} #}
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ daily['dt_txt'] }}</h5>
-                                    <figure class="figure">
-                                        <img src="https://openweathermap.org/img/w/{{ daily['weather']['icon'] }}.png" class="img-fluid" alt="{{ weather.main_description }}">
-                                    </figure>
-                                    <h6 class="card-subtitle text-muted"> {{ daily['weather']['main'] }}</h6>
-                                    <h6 class="card-subtitle text-muted"> {{ daily['main']['temp'] }}&#8451;</h6>
-                                    <p class="card-text">{{ daily['main']['humidity'] }}% Humidity</p>
-                                    <p class="card-text">Should feel like {{ daily['main']['feels_like'] }}&#8451;</p>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    </div>
+        <section class="weather-forecast">
+            <div class="weather container-fluid opacity-75">
+                <div class="card text-dark bg-link text-center">
+                    {# <figure class="figure"> #}
+                        {# <img src="static/rawImage.jpeg" class="img-fluid rounded float-start d-block" width="150" alt=""> #}
+                    {# </figure> #}
+                    <div class="card-body align-items-center">
+                        <h1 class="weather-city card-title">{{ weather.city }}, {{ weather.country }}</h1>
+                        <span>
+                            <h6 class="weather-description text-muted card-subtitle">{{ weather.main_description }} ({{ weather.description }})</h6>
+                            <figure class="figure">
+                                <img src="https://openweathermap.org/img/w/{{ weather.icon }}.png" class="img-fluid" alt="{{ weather.main_description }}">
+                            </figure>
+                            <h3 class="card-subtitle">Current: {{ weather.temperature }}&#8451;</h3>
+                        </span>
+                        <p class="card-subtitle text-muted">Sunrise: {{ weather.sunrise }}</p>
+                        <p class="card-subtitle text-muted">Sunset: {{ weather.sunset }}</p>
+                        <p></p>
+                        
+                        <p class="forecast-city-population card-subtitle text-muted">Timezone: {{ weather.timezone }}</p>
+                        <p class="forecast-city-population card-subtitle text-muted">Population: {{ forecast_data.population }}</p>
                 </div>
             </div>
+        </section>
+            <section class="weather-forecast opacity-75">
+                <h3 class="text-center text-white opacity-75"><b>FIVE DAY FORECAST</b></h3>
+                <div class="card text-dark bg-link text-center">
+                    <div class="card-body align-items-center">
+                    <div class="weather-forecast container-fluid">
+                        <div class="row align-items-center">
+                        {% for daily in daily_forecast %}
+                            {# {{ icon = cast['weather']['icon'] }} #}
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ daily['dt_txt'] }}</h5>
+                                        <figure class="figure">
+                                            <img src="https://openweathermap.org/img/w/{{ daily['weather']['icon'] }}.png" class="img-fluid" alt="{{ weather.main_description }}">
+                                        </figure>
+                                        <h6 class="card-subtitle text-muted"> {{ daily['weather']['main'] }}</h6>
+                                        <h6 class="card-subtitle text-muted"> {{ daily['main']['temp'] }}&#8451;</h6>
+                                        <p class="card-text">{{ daily['main']['humidity'] }}% Humidity</p>
+                                        <p class="card-text">Should feel like {{ daily['main']['feels_like'] }}&#8451;</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            
         </div>
         {% endblock weather %}
         
