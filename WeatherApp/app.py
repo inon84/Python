@@ -118,6 +118,7 @@ def index(city=None):
                             now=now, 
                             weather=weather_data, 
                             daily_forecast=daily_forecast,
+                            daily_times=daily_times,
                             forecast_data=forecast_data)
 
 if __name__ == '__main__':
