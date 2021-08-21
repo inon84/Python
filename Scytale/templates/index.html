@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Scytale Pull Request Manager</title>
+        <meta name="description" content="scytale pr manager">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        {% endblock head %}
+    </head>
+    <body background="/static/background.jpg">
+        <div class="clearfix"></div>
+        <div class="search container-fluid align-content-center">
+            <form action ="/pr/" method="post" class="row align-items-center">
+            <div class="col">
+                <input type="text" class="form-control rounded" name="id" id="id" placeholder="Search PR ID" required>
+            </div>
+            <div class="col">
+                <button type="submit" value ="submit" class="btn btn-primary btn-blue rounded">Go!</button>
+            </div>
+            </form>
+        </div>
+        {% if req_method == 'POST' %}
+        <div class="card text-dark opacity-75">
+            <h3>POST METHOD?</h3>
+            <p>ID: {{ pr.id }}</p>
+            <p>Description: {{ pr.description }}</p>
+        </div>
+        {% endif %}
+        {% if req_method == 'GET' %}
+        <div class="card text-dark opacity-75">
+            <h3>GET METHOD?</h3>
+            <p>ID: {{ req_params.id }}</p>
+            <p>Title: {{ req_params.title }}</p>
+            <p>Description: {{ req_params.desc }}</p>
+            <p>Author name: {{ req_params.author_name }}</p>
+            <p>Status: {{ req_params.status }}</p>
+            <p>{{ req_params.labels }}</p>
+            <p>{{ req_params.date_created }}</p>
+        </div>
+        {% endif %}
+    </div>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    </body>
+</html>
