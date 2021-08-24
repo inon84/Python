@@ -52,7 +52,6 @@ def index(city=None):
     r = requests.get(WEATHER_URL.format(city, API_KEY)).json()
     forecast = requests.get(FORECAST_URL.format(city, API_KEY)).json()
 
-    
     #TODO: handle bad requests
     # if r['cod'] != 200:
     #     print("bad request")
