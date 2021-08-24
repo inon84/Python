@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block weather %}
+    <section class="weather-forecast">
+        <div class="weather container-fluid opacity-75">
+            <div class="card text-dark bg-link text-center">
+                <div class="card-body align-items-center">
+                    <h1 class="weather-city card-title">{{ forecast }}</h1>
+                </div>
+        </div>
+    </section>
+{% endblock weather %}

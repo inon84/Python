@@ -1,6 +1,5 @@
 from datetime import datetime as dt
 from datetime import timezone, timedelta, tzinfo
-from flask.templating import render_template_string
 import requests
 from flask import Flask, render_template, redirect, url_for, request
 
