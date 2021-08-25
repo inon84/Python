@@ -12,17 +12,17 @@ app.mount('/static', StaticFiles(directory='static/'), name='static')
 templates = Jinja2Templates(directory='templates/')
 
 
-@app.get('/pr', response_class=HTMLResponse)
+@app.get('/prs', response_class=HTMLResponse)
 async def read_items(request: Request):
     # return "GET."
     result = 'TEST'
     # return templates.TemplateResponse('index.html', 'request': request)
     return templates.TemplateResponse('index.html', context={'request': request})
 
-@app.post('/pr', response_class=HTMLResponse)
+@app.post('/prs', response_class=HTMLResponse)
 async def search(context):
-    return 'POST.', context
-    # return templates.TemplateResponse('index.html')
+    # return 'POST', context
+    return templates.TemplateResponse('index.html')
 
 if __name__ == '__main__':
     uvicorn.run('fast:app', host='localhost', port=8000, reload=True)
