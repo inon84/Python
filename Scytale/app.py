@@ -28,10 +28,13 @@ class PullRequest():
             self.status = status
             self.labels = labels
             self.date_created = date_created
-            # self.create_timestamp()
         
         def create_timestamp():
             return str(dt.now().replace(microsecond=0).timestamp()).split('.')[0]
+        
+        def read_timestamp(ts):
+            return dt.fromtimestamp(int(ts))
+        
 
 # Mock DB
 # Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est deserunt dolore explicabo id dolor! In doloribus nostrum ipsum pariatur tempora provident, expedita quibusdam, corporis veniam culpa adipisci! Distinctio, praesentium inventore!
@@ -49,14 +52,13 @@ prs_data = [pr1, pr2, pr3, pr4, pr5, pr6, pr7, pr8, pr9, pr10]
 
 @app.route('/')
 def index():
+    print(dt.fromtimestamp(int(pr9.date_created)))
     return render_template('index.html', 
                             prs_data=prs_data)
 
 @app.route('/prs', methods=['GET', 'POST'])
 def prs():
     if request.method == 'GET':
-        # return make_response(jsonify(prs_data), 200)
-        # return make_response(None, 200)
         pass
 
     elif request.method == 'POST':

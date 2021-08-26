@@ -28,15 +28,23 @@
                 </thead>
                 <tbody>
                     {% for item in prs_data %}
-                    <tr>
+                    <tr class='user-select-all'>
                         <td>#{{ item.id }}</td>
                         <td>{{ item.title }}</td>
                         <td>{{ item.description }}</td>
                         <td>{{ item.author_name }}</td>
-                        <td>{{ item.status }}</td>
-                        <td>{% for label in item.labels %}
+                        {% if item.status == 'Draft' %}
+                            <td class='text-warning'><b>{{ item.status }}</b></td>
+                        {% elif item.status == 'Closed' %}
+                            <td class='text-success'><b>{{ item.status }}</b></td>
+                        {% elif item.status == 'Open' %}
+                            <td class='text-danger'><b>{{ item.status }}</b></td>
+                        {% endif %}
+                        <td>
+                        {% for label in item.labels %}
                             {{ label }}
-                        {% endfor %}</td>
+                        {% endfor %}
+                        </td>
                         <td>{{ item.date_created }}</td>
                     </tr>
                     {% endfor %}
