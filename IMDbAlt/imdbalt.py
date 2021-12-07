@@ -23,7 +23,7 @@ def get_movie_details(title_id):
     GET_DETAILS_URL = "https://imdb8.p.rapidapi.com/title/get-details"
     QUERYSTRING = {"tconst":{ title_id }}
     movie_details = requests.request("GET", GET_DETAILS_URL, headers=HEADERS, 
-                                     params=QUERYSTRING).text
+                                     params=QUERYSTRING).json()
     return movie_details
 
 # print(get_movie_details('tt0133093'))
@@ -49,4 +49,4 @@ def get_top_movies_details(limit=3):
         top_3_movies.append(get_movie_details(movie))
     return top_3_movies
 
-print(get_top_movies_details(1))
+print(get_top_movies_details(5))
