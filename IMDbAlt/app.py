@@ -1,4 +1,9 @@
 import requests
+import uvicorn
+from fastapi import FastAPI
+import jsonify
+
+app = FastAPI()
 
 POPULAR_MOVIES_URL = "https://imdb8.p.rapidapi.com/title/get-most-popular-movies"
 QUERYSTRING = {"homeCountry":"US","purchaseCountry":"US","currentCountry":"US"}
@@ -28,20 +33,22 @@ def get_movie_details(title_id):
 
 # print(get_movie_details('tt0133093'))
 
-# ['{"@type":"imdb.api.title.title",
-# "id":"/title/tt11214590/",
-# "image":{"height":1600,
-# "id":"/title/tt11214590/images/rm1248389377",
-# "url":"https://m.media-amazon.com/images/M/MV5BYzdlMTMyZWQtZWNmMC00MTJiLWIyMWMtM2ZlZDdlYzZhNTc0XkEyXkFqcGdeQXVyMTMzNDE5NDM2._V1_.jpg",
-# "width":1080},
-# "runningTimeInMinutes":158,
-# "title":"House of Gucci",
-# "titleType":"movie",
-# "year":2021}']
+'''
+schema: 
+['{"@type":"imdb.api.title.title",
+"id":"/title/tt11214590/",
+"image":{"height":1600,
+"id":"/title/tt11214590/images/rm1248389377",
+"url":"https://m.media-amazon.com/images/M/MV5BYzdlMTMyZWQtZWNmMC00MTJiLWIyMWMtM2ZlZDdlYzZhNTc0XkEyXkFqcGdeQXVyMTMzNDE5NDM2._V1_.jpg",
+"width":1080},
+"runningTimeInMinutes":158,
+"title":"House of Gucci",
+"titleType":"movie",
+"year":2021}']
+'''
 
 class Movie():
     id = get_movie_details
-        
 
 def get_top_movies_details(limit=3):
     top_3_movies = []
@@ -49,4 +56,11 @@ def get_top_movies_details(limit=3):
         top_3_movies.append(get_movie_details(movie))
     return top_3_movies
 
-print(get_top_movies_details(5))
+@app.get('/')
+async def root():
+    return get_movie_details('tt0133093')
+
+# print(get_top_movies_details(5))
+
+if __name__ == '__main__':
+    uvicorn.run('imdbalt:app', host='localhost', port=8000, reload=True)
