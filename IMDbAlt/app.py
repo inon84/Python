@@ -58,9 +58,11 @@ def get_top_movies_details(limit=3):
 
 @app.get('/')
 async def root():
-    return get_movie_details('tt0133093')
+    return get_top_movies_details(10)
 
-# print(get_top_movies_details(5))
+# @app.post('/')
+# async def root():
+#     return get_movie_details('tt0133093')
 
 if __name__ == '__main__':
-    uvicorn.run('imdbalt:app', host='localhost', port=8000, reload=True)
+    uvicorn.run('app:app', host='localhost', port=8000, reload=True)
