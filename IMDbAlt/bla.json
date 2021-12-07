@@ -1,0 +1,142 @@
+[
+    {
+      "@type": "imdb.api.title.title",
+      "id": "/title/tt11214590/",
+      "image": {
+        "height": 1600,
+        "id": "/title/tt11214590/images/rm1248389377",
+        "url": "https://m.media-amazon.com/images/M/MV5BYzdlMTMyZWQtZWNmMC00MTJiLWIyMWMtM2ZlZDdlYzZhNTc0XkEyXkFqcGdeQXVyMTMzNDE5NDM2._V1_.jpg",
+        "width": 1080
+      },
+      "runningTimeInMinutes": 158,
+      "title": "House of Gucci",
+      "titleType": "movie",
+      "year": 2021
+    },
+    {
+      "@type": "imdb.api.title.title",
+      "id": "/title/tt10293406/",
+      "image": {
+        "height": 1500,
+        "id": "/title/tt10293406/images/rm2236541697",
+        "url": "https://m.media-amazon.com/images/M/MV5BZGRhYjE2NWUtN2FkNy00NGI3LTkxYWMtMDk4Yjg5ZjI3MWI2XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg",
+        "width": 1013
+      },
+      "runningTimeInMinutes": 126,
+      "title": "The Power of the Dog",
+      "titleType": "movie",
+      "year": 2021
+    },
+    {
+      "@type": "imdb.api.title.title",
+      "id": "/title/tt10872600/",
+      "image": {
+        "height": 4000,
+        "id": "/title/tt10872600/images/rm3936939521",
+        "url": "https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_.jpg",
+        "width": 2699
+      },
+      "runningTimeInMinutes": 150,
+      "title": "Spider-Man: No Way Home",
+      "titleType": "movie",
+      "year": 2021
+    },
+    {
+      "@type": "imdb.api.title.title",
+      "id": "/title/tt4244994/",
+      "image": {
+        "height": 1100,
+        "id": "/title/tt4244994/images/rm3704878593",
+        "url": "https://m.media-amazon.com/images/M/MV5BZGExZTUzYWQtYWJjZi00OTI4LTk4OGYtNTA2YzcwMmNiZTMxXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg",
+        "width": 743
+      },
+      "runningTimeInMinutes": 152,
+      "title": "The Last Duel",
+      "titleType": "movie",
+      "year": 2021
+    },
+    {
+      "@type": "imdb.api.title.title",
+      "id": "/title/tt4513678/",
+      "image": {
+        "height": 1500,
+        "id": "/title/tt4513678/images/rm2083320065",
+        "url": "https://m.media-amazon.com/images/M/MV5BMmZiMjdlN2UtYzdiZS00YjgxLTgyZGMtYzE4ZGU5NTlkNjhhXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg",
+        "width": 1012
+      },
+      "runningTimeInMinutes": 124,
+      "title": "Ghostbusters: Afterlife",
+      "titleType": "movie",
+      "year": 2021
+    },
+    {
+      "@type": "imdb.api.title.title",
+      "id": "/title/tt1160419/",
+      "image": {
+        "height": 755,
+        "id": "/title/tt1160419/images/rm2910452737",
+        "url": "https://m.media-amazon.com/images/M/MV5BN2FjNmEyNWMtYzM0ZS00NjIyLTg5YzYtYThlMGVjNzE1OGViXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+        "width": 509
+      },
+      "runningTimeInMinutes": 155,
+      "title": "Dune",
+      "titleType": "movie",
+      "year": 2021
+    },
+    {
+      "@type": "imdb.api.title.title",
+      "id": "/title/tt2953050/",
+      "image": {
+        "height": 3000,
+        "id": "/title/tt2953050/images/rm2541025281",
+        "url": "https://m.media-amazon.com/images/M/MV5BNjE5NzA4ZDctOTJkZi00NzM0LTkwOTYtMDI4MmNkMzIxODhkXkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_.jpg",
+        "width": 2025
+      },
+      "runningTimeInMinutes": 102,
+      "title": "Encanto",
+      "titleType": "movie",
+      "year": 2021
+    },
+    {
+      "@type": "imdb.api.title.title",
+      "id": "/title/tt7991608/",
+      "image": {
+        "height": 2222,
+        "id": "/title/tt7991608/images/rm2565534977",
+        "url": "https://m.media-amazon.com/images/M/MV5BZmRjODgyMzEtMzIxYS00OWY2LTk4YjUtMGMzZjMzMTZiN2Q0XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+        "width": 1500
+      },
+      "runningTimeInMinutes": 118,
+      "title": "Red Notice",
+      "titleType": "movie",
+      "year": 2021
+    },
+    {
+      "@type": "imdb.api.title.title",
+      "id": "/title/tt8721424/",
+      "image": {
+        "height": 1500,
+        "id": "/title/tt8721424/images/rm639366657",
+        "url": "https://m.media-amazon.com/images/M/MV5BZmMyMmE0M2UtN2E2MC00YzVmLTkwODgtOTVhYjVlOTBhY2RjXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg",
+        "width": 1013
+      },
+      "runningTimeInMinutes": 115,
+      "title": "tick, tick...BOOM!",
+      "titleType": "movie",
+      "year": 2021
+    },
+    {
+      "@type": "imdb.api.title.title",
+      "id": "/title/tt10838180/",
+      "image": {
+        "height": 4096,
+        "id": "/title/tt10838180/images/rm3704744193",
+        "url": "https://m.media-amazon.com/images/M/MV5BMGJkNDJlZWUtOGM1Ny00YjNkLThiM2QtY2ZjMzQxMTIxNWNmXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg",
+        "width": 2764
+      },
+      "runningTimeInMinutes": 148,
+      "title": "The Matrix Resurrections",
+      "titleType": "movie",
+      "year": 2021
+    }
+  ]

@@ -64,5 +64,8 @@ async def root():
 # async def root():
 #     return get_movie_details('tt0133093')
 
+# with open('IMDbAlt/bla.json', 'r') as file:
+#     print(file.read())
+
 if __name__ == '__main__':
     uvicorn.run('app:app', host='localhost', port=8000, reload=True)
