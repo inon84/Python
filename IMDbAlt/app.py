@@ -51,10 +51,10 @@ class Movie():
     id = get_movie_details
 
 def get_top_movies_details(limit=3):
-    top_3_movies = []
+    top_x_movies = []
     for movie in popular_movies[:limit]:
-        top_3_movies.append(get_movie_details(movie))
-    return top_3_movies
+        top_x_movies.append(get_movie_details(movie))
+    return top_x_movies
 
 @app.get('/')
 async def root():
