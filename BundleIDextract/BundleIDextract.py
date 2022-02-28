@@ -4,7 +4,7 @@
 A simple script to extract the bundle ID from a json formatted .txt file containing the results of an itunes App ID lookup.
 Input Apple App Store ID and output the bundleId.
 Input: '1044413150'
-Example URL to request: 'https://itunes.apple.com/lookup?id=1044413150&country=us'
+Example URL to request: 'https://itunes.apple.com/lookup?id=1044413150&country=us' 
 a .txt file containing the results of an itunes App ID lookup result will be downloaded from the Apple App Store.
 Output bundleId: 'com.clutchpoints.ClutchPoints'
 Usage: python3 BundleIDextract.py 1044413150
