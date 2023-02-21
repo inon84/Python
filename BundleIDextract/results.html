@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Check Apple App IDs - Results</title>
+</head>
+<body>
+	<h1>Check Apple App IDs - Results</h1>
+	{% if results %}
+		<ul>
+		{% for result in results %}
+			<li>{{ result }}</li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No results found.</p>
+	{% endif %}
+	<a href="/">Check more Apple App IDs</a>
+</body>
+</html>
