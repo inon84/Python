@@ -12,9 +12,7 @@ def check_app_ids():
         results = main(apple_ids)
         # Render template with results
         return render_template('results.html', results=results)
-    else:
-        # Render empty form
-        return render_template('form.html')
+    return render_template('form.html')
 
 apple_ids = [357828853,
             389157776,
@@ -25,7 +23,6 @@ apple_ids = [357828853,
             1044413150] # remove when un-needed
 
 def main(apple_ids):
-    
     if len(apple_ids) == 0:
         return 'No input provided'
     else:
