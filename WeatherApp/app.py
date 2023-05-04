@@ -58,8 +58,9 @@ def index(city=None):
     rweather = r['weather'][0]
     rsys = r['sys']
         
-    #tz offset string
-    offset = int(dt.utcfromtimestamp(r['timezone']).strftime('%H'))
+    #TODO: tz offset string, the -3 fixed it, need to fix better with UTC offset
+    
+    offset = int(dt.utcfromtimestamp(r['timezone']).strftime('%H'))-3
     # offset = dt(r['timezone'])
     if offset < 12:
         tz_show="UTC+" + str(offset)
@@ -67,6 +68,13 @@ def index(city=None):
         tz_show="UTC-" + str(offset)
     
     print(f'offset: {offset}')
+    
+    # testing time deltas
+    sunrise_utc = dt.fromtimestamp(rsys['sunrise'])  # Sunrise time in UTC
+    sunset_utc = dt.fromtimestamp(rsys['sunset'])  # Sunset time in UTC
+    sunrise_local = sunrise_utc + timedelta(hours=offset)  # Sunrise time with offset
+    sunset_local = sunset_utc + timedelta(hours=offset)  # Sunset time with offset
+
     
     weather_data = {
         'city': forecast['city']['name'],
@@ -77,8 +85,10 @@ def index(city=None):
         'temperature': round(r['main']['temp']),
         'icon': rweather['icon'],
         # 'sunrise': dt.utcfromtimestamp(rsys['sunrise'] + offset).strftime('%H:%m'),
-        'sunrise': dt.fromtimestamp(rsys['sunrise']).strftime('%H:%m'),
-        'sunset': dt.fromtimestamp(rsys['sunset']).strftime('%H:%m'),
+        'sunrise': dt.fromtimestamp(rsys['sunrise']).strftime('%H:%M'),
+        'sunset': dt.fromtimestamp(rsys['sunset']).strftime('%H:%M'),
+        'sunrise_local': sunrise_local.strftime('%H:%M'),
+        'sunset_local': sunset_local.strftime('%H:%M'),
         'timezone': str(tz_show)
     }
     
@@ -97,7 +107,7 @@ def index(city=None):
         # print(cast)
         # forecast['list'].update({cast[]})
         if '00:00:00' in cast:
-            daily_times.append(dt.fromtimestamp(cast['dt']).strftime('%H:%m'))
+            daily_times.append(dt.fromtimestamp(cast['dt']).strftime('%H:%M'))
         daily_forecast.append(cast)
             
     # print(daily_forecast)

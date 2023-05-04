@@ -59,11 +59,9 @@
                             </figure>
                             <h3 class="card-subtitle">Current: {{ weather.temperature }}&#8451;</h3>
                         </span>
-                        <p class="card-subtitle text-muted">Sunrise: {{ weather.sunrise }}</p>
-                        <p class="card-subtitle text-muted">Sunset: {{ weather.sunset }}</p>
+                        <p class="card-subtitle text-muted">Sunrise: {{ weather.sunrise_local }}</p>
+                        <p class="card-subtitle text-muted">Sunset: {{ weather.sunset_local }}</p>
                         <p></p>
-                        
-                        <p class="forecast-city-population card-subtitle text-muted">Timezone: {{ weather.timezone }}</p>
                         <p class="forecast-city-population card-subtitle text-muted">Population: {{ forecast_data.population }}</p>
                 </div>
             </div>
