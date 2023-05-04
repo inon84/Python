@@ -77,11 +77,14 @@ def index(city=None):
         'temperature': round(r['main']['temp']),
         'icon': rweather['icon'],
         # 'sunrise': dt.utcfromtimestamp(rsys['sunrise'] + offset).strftime('%H:%m'),
-        'sunrise': dt.utcfromtimestamp((rsys['sunrise']) + offset).strftime('%H:%m'),
-        'sunset': dt.utcfromtimestamp(rsys['sunset'] + offset).strftime('%H:%m'),
+        'sunrise': dt.fromtimestamp(rsys['sunrise']).strftime('%H:%m'),
+        'sunset': dt.fromtimestamp(rsys['sunset']).strftime('%H:%m'),
         'timezone': str(tz_show)
     }
     
+    print('Sunrise: ', dt.fromtimestamp(rsys['sunrise']))
+    print('UTC NOW:', dt.utcnow())
+    print('NOW:', dt.now())
     # forecast_days = []
     # for cast in forecast['list']:
     #     forecast_days.append(cast['dt_txt'])   
@@ -91,12 +94,13 @@ def index(city=None):
     daily_times = []
     
     for cast in forecast['list']:
-        print(cast)
+        # print(cast)
         # forecast['list'].update({cast[]})
-        daily_times.append(cast['dt'])
+        if '00:00:00' in cast:
+            daily_times.append(dt.fromtimestamp(cast['dt']).strftime('%H:%m'))
         daily_forecast.append(cast)
             
-    print(daily_forecast)
+    # print(daily_forecast)
     print(daily_times)
     
     pop = forecast['city']['population']

@@ -15,7 +15,8 @@
         <div class="clearfix">...</div>
         <header>
             {% block time %}
-                <div class="time container-fluid opacity-75">
+            <!--
+                    <div class="time container-fluid opacity-75">
                     <div class="row align-items-center text-white">
                         <div class="col">
                             <p>{{ now_local.strftime('%X | %A, %d %B, %Y') }} <b>(now_local)</b></p>
@@ -29,6 +30,7 @@
                     </div>
                 </div>
             {% endblock time %}
+        -->
          </header>
         <div class="search container-fluid align-content-center">
             <form action ="/search" method="get" class="row align-items-center">
@@ -72,6 +74,10 @@
                     <div class="card-body align-items-center">
                     <div class="weather-forecast container-fluid">
                         <div class="row align-items-center">
+                        <!--{% for day in daily_times %}
+                            <h5 class="card-title">{{ dailytimes[day] }}</h5>  
+                        {% endfor %}
+                        -->
                         {% for daily in daily_forecast %}
                             {# {{ icon = cast['weather']['icon'] }} #}
                             <div class="col">
@@ -79,13 +85,15 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{ daily['dt_txt'] }}</h5>
                                         {# <h5 class="card-title">{{ daily_times[i] }}</h5> #}
-                                        <figure class="figure">
+                                    <!--
+                                            <figure class="figure">
                                             <img src="https://openweathermap.org/img/w/{{ daily['weather']['icon'] }}.png" class="img-fluid" alt="{{ weather.main_description }}">
                                         </figure>
+                                    -->
                                         <h6 class="card-subtitle text-muted"> {{ daily['weather']['main'] }}</h6>
                                         <h6 class="card-subtitle text-muted"> {{ daily['main']['temp'] }}&#8451;</h6>
                                         <p class="card-text">{{ daily['main']['humidity'] }}% Humidity</p>
-                                        <p class="card-text">Should feel like {{ daily['main']['feels_like'] }}&#8451;</p>
+                                        <p class="card-text">feels like {{ daily['main']['feels_like'] }}&#8451;</p>
                                     </div>
                                 </div>
                             </div>
