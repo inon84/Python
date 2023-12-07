@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .highlight {
+            background-color: #00FF00;  /* Green background for highlighted rows */
+        }
+    </style>
+    <title>App-Ads.txt Viewer</title>
+</head>
+<body>
+    <h1>App-Ads.txt Viewer</h1>
+    
+    <form method="post" action="/">
+        <label for="url">Enter URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if data %}
+        <div>
+            <p>Matching Lines: {{ data[0]|length }}</p>
+            <p>Missing Lines: {{ data[1]|length }}</p>
+        </div>
+        <table border="1">
+            <tr>
+                <th>Domain</th>
+                <th>Account ID</th>
+                <th>Relationship</th>
+            </tr>
+            {% for line in data[0] %}
+                <tr class="{{ line.3 }}">
+                    {% for item in line[:3] %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            {% for line in data[1] %}
+                <tr>
+                    {% for item in line %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
