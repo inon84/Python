@@ -20,6 +20,7 @@ def fetch_app_ads_txt(url):
 
 def parse_app_ads_txt(content):
     reader = csv.reader(StringIO(content), delimiter=',')
+    # change this as needed, better to source it from a DB or .txt file in this folder.
     highlighted_domains = [
         "startapp.com, 150291354",
         "start.io, 150291354",
